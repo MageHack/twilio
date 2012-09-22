@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MageHack_Twilio>
+            <version>0.0.1</version>
+        </MageHack_Twilio>
+    </modules>
+    <global>
+        <helpers>
+            <twilio>
+                <class>MageHack_Twilio_Helper</class>
+            </twilio>
+        </helpers>
+        <models>
+            <mymodule>
+                <class>MageHack_Twilio_Mymodel</class>
+            </mymodule>
+        </models>
+        <events>
+            <!-- here the event to hook: -->
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <mymodule_model_mymodel>
+                        <type>model</type>
+                        <class>Myproyect_Mymodule_Model_Mymodel</class>
+                        <method>myModelMethod</method>
+                    </mymodule_model_mymodel>
+                </observers>
+            </checkout_onepage_controller_success_action>
+       </events>
+    </global>
+</config>

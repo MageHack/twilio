@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MageHack_Twilio>
+            <active>true</active>
+            <codePool>local</codePool>
+        </MageHack_Twilio>
+    </modules>
+</config>
