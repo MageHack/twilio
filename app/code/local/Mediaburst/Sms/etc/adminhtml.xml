@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <sales>
+            <children>
+                <mediaburst_sms translate="title" module="Mediaburst_Sms">
+                    <title>SMS Messages</title>
+                    <sort_order>100</sort_order>
+                    <children>
+                        <pending translate="title">
+                            <title>Pending</title>
+                            <action>adminhtml/mediaburst_sms/pending</action>
+                            <sort_order>100</sort_order>
+                        </pending>
+                        <sent translate="title">
+                            <title>Sent</title>
+                            <action>adminhtml/mediaburst_sms/sent</action>
+                            <sort_order>200</sort_order>
+                        </sent>
+                        <failed translate="title">
+                            <title>Failed</title>
+                            <action>adminhtml/mediaburst_sms/failed</action>
+                            <sort_order>300</sort_order>
+                        </failed>
+                        <check translate="title">
+                            <title>View/Buy Messages</title>
+                            <action>adminhtml/mediaburst_sms/check</action>
+                            <sort_order>400</sort_order>
+                        </check>
+                    </children>
+                </mediaburst_sms>
+            </children>
+        </sales>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <sales>
+                        <children>
+                            <mediaburst_sms translate="title">
+                                <title>SMS Messages</title>
+                                <sort_order>100</sort_order>
+                                <children>
+                                    <pending translate="title">
+                                        <title>View Pending</title>
+                                        <sort_order>110</sort_order>
+                                    </pending>
+                                    <sent translate="title">
+                                        <title>View Sent</title>
+                                        <sort_order>120</sort_order>
+                                    </sent>
+                                    <failed translate="title">
+                                        <title>View Failed</title>
+                                        <sort_order>130</sort_order>
+                                    </failed>
+                                    <check translate="title">
+                                        <title>View/Buy Messages</title>
+                                        <sort_order>140</sort_order>
+                                    </check>
+                                    <send translate="title">
+                                        <title>Manual Send</title>
+                                        <sort_order>210</sort_order>
+                                    </send>
+                                    <requeue translate="title">
+                                        <title>Manual Requeue</title>
+                                        <sort_order>220</sort_order>
+                                    </requeue>
+                                    <retry translate="title">
+                                        <title>Manual Retry</title>
+                                        <sort_order>230</sort_order>
+                                    </retry>
+                                </children>
+                            </mediaburst_sms>
+                        </children>
+                    </sales>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <mediaburst_sms translate="title">
+                                        <title>Clockwork SMS</title>
+                                    </mediaburst_sms>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
