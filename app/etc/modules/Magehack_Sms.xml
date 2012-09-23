@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <MageHack_Twilio>
+        <Magehack_Sms>
             <active>true</active>
-            <codePool>local</codePool>
-        </MageHack_Twilio>
+            <codePool>community</codePool>
+        </Magehack_Sms>
     </modules>
 </config>
