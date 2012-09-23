@@ -81,6 +81,36 @@
                         </debug>
                     </fields>
                 </general>
+                <twilio translate="label">
+                    <label>Twilio</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>15</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <fields>
+                        <account translate="label">
+                            <label>Account ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </account>
+                        <token translate="label">
+                            <label>Auth Token</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </token>
+                        <twilio_number translate="label">
+                            <label>Twilio Number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </twilio_number>
+                   </fields>
+                </twilio>
                 <order_created translate="label">
                     <label>Order Created</label>
                     <frontend_type>text</frontend_type>

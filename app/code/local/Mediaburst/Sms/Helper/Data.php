@@ -82,6 +82,30 @@ class Mediaburst_Sms_Helper_Data extends Mage_Core_Helper_Abstract implements Me
         return Mage::getStoreConfig(self::XML_CONFIG_BASE_PATH . 'general/key', $store);
     }
     
+    public function get($path, $store = null)
+    {
+        if ($store === null) {
+            $store = $this->_defaultStore;
+        }
+
+        return Mage::getStoreConfig(self::XML_CONFIG_BASE_PATH . $path, $store);
+    }
+
+    public function getApi()
+    {
+        $provider = $this->get('general/provider');
+        $api = null;
+        switch ($provider) {
+            case 'mediaburst':
+                $api = Mage::getModel('Mediaburst_Sms/Api', $this);
+                break;
+            case 'twilio':
+                $api = Mage::getModel('Mediaburst_Sms/ApiTwilio', $this);
+                break;
+        }
+        return $api;
+    }
+
     public function isDebug($store = null)
     {
         if ($store === null) {

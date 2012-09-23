@@ -151,7 +151,7 @@ class Mediaburst_Sms_Model_Observer
             }
         }
 
-        $api = Mage::getModel('Mediaburst_Sms/Api', $this->getHelper());
+        $api = $this->getHelper()->getApi();
 
         foreach ($runs as $run) {
             $collection = Mage::getModel('Mediaburst_Sms/Message')->getCollection()
