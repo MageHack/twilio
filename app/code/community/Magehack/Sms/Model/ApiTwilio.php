@@ -17,7 +17,7 @@
  * OF THIS SOFTWARE.
  *
  * @category  Mage
- * @package   Mediaburst_Sms
+ * @package   Magehack_Sms
  * @license   http://opensource.org/licenses/isc-license.txt
  * @copyright Copyright © 2011 by Mediaburst Limited
  * @author    Lee Saferite <lee.saferite@lokeycoding.com>
@@ -28,7 +28,7 @@ require_once Mage::getBaseDir('lib') . '/Twilio/Services/Twilio.php';
 /**
  * API implementation class
  */
-class Mediaburst_Sms_Model_ApiTwilio extends Mediaburst_Sms_Model_Api
+class Magehack_Sms_Model_ApiTwilio extends Magehack_Sms_Model_Api
 {
     /**
      * Send multiple messages at once
@@ -54,9 +54,9 @@ class Mediaburst_Sms_Model_ApiTwilio extends Mediaburst_Sms_Model_Api
                 $message->getContent());
             if ($sms->sid) {
                 $this->_config->log('Queued ' . $sms->sid);
-                $message->setStatus(Mediaburst_Sms_Model_Message::STATUS_SENT);
+                $message->setStatus(Magehack_Sms_Model_Message::STATUS_SENT);
             } else {
-                $message->setStatus(Mediaburst_Sms_Model_Message::STATUS_FAILED);
+                $message->setStatus(Magehack_Sms_Model_Message::STATUS_FAILED);
             }
             $message->save();
 //            $this->_config->log('Messages ' . count($messages), Zend_Log::WARN);

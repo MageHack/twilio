@@ -17,50 +17,24 @@
  * OF THIS SOFTWARE.
  *
  * @category  Mage
- * @package   Mediaburst_Sms
+ * @package   Magehack_Sms
  * @license   http://opensource.org/licenses/isc-license.txt
  * @copyright Copyright © 2011 by Mediaburst Limited
  * @author    Lee Saferite <lee.saferite@lokeycoding.com>
  */
 
 /**
- * Config Interface
+ * Grid Container
  */
-interface Mediaburst_Sms_Model_ApiConfig
+class Magehack_Sms_Block_GridContainer extends Mage_Adminhtml_Block_Widget_Grid_Container
 {
+    protected function _prepareLayout()
+    {
+        Mage_Adminhtml_Block_Widget_Container::_prepareLayout();
+    }
 
-    /**
-     * Return the URL to the send message service√è
-     */
-    public function getSendUrl();
-
-    /**
-     * Return the URL to the credit check service
-     *
-     * @return string
-     */
-    public function getCheckUrl();
-
-    /**
-     * Return the API key
-     *
-     * @return string
-     */
-    public function getKey();
-
-    /**
-     * Check is debugging is enabled
-     *
-     * @return bool
-     */
-    public function isDebug();
-
-    /**
-     * Log a message
-     *
-     * @param mixed $message
-     * @param int   $level
-     * @param mixed $store
-     */
-    public function log($message, $level = Zend_Log::DEBUG, $store = null);
+    public function setHeaderText($headerText)
+    {
+        $this->_headerText = $headerText;
+    }
 }

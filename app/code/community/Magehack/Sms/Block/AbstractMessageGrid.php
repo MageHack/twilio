@@ -17,7 +17,7 @@
  * OF THIS SOFTWARE.
  *
  * @category  Mage
- * @package   Mediaburst_Sms
+ * @package   Magehack_Sms
  * @license   http://opensource.org/licenses/isc-license.txt
  * @copyright Copyright © 2011 by Mediaburst Limited
  * @author    Lee Saferite <lee.saferite@lokeycoding.com>
@@ -26,7 +26,7 @@
 /**
  * Abstract Message Grid
  */
-abstract class Mediaburst_Sms_Block_AbstractMessageGrid extends Mage_Adminhtml_Block_Widget_Grid
+abstract class Magehack_Sms_Block_AbstractMessageGrid extends Mage_Adminhtml_Block_Widget_Grid
 {
 
     protected $_resourceClass = null;

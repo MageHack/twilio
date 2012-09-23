@@ -17,7 +17,7 @@
  * OF THIS SOFTWARE.
  *
  * @category  Mage
- * @package   Mediaburst_Sms
+ * @package   Magehack_Sms
  * @license   http://opensource.org/licenses/isc-license.txt
  * @copyright Copyright © 2011 by Mediaburst Limited
  * @author    Lee Saferite <lee.saferite@lokeycoding.com>
@@ -26,9 +26,9 @@
 /**
  * Helper
  */
-class Mediaburst_Sms_Helper_Data extends Mage_Core_Helper_Abstract implements Mediaburst_Sms_Model_ApiConfig
+class Magehack_Sms_Helper_Data extends Mage_Core_Helper_Abstract
 {
-    const XML_CONFIG_BASE_PATH = 'mediaburst_sms/';
+    const XML_CONFIG_BASE_PATH = 'magehack_sms/';
 
     protected $_defaultStore = null;
 
@@ -97,10 +97,10 @@ class Mediaburst_Sms_Helper_Data extends Mage_Core_Helper_Abstract implements Me
         $api = null;
         switch ($provider) {
             case 'mediaburst':
-                $api = Mage::getModel('Mediaburst_Sms/Api', $this);
+                $api = Mage::getModel('Magehack_Sms/Api', $this);
                 break;
             case 'twilio':
-                $api = Mage::getModel('Mediaburst_Sms/ApiTwilio', $this);
+                $api = Mage::getModel('Magehack_Sms/ApiTwilio', $this);
                 break;
         }
         return $api;
@@ -301,7 +301,7 @@ class Mediaburst_Sms_Helper_Data extends Mage_Core_Helper_Abstract implements Me
      *
      * @param Mage_Core_Model_Session_Abstract $session
      *
-     * @return Mediaburst_Sms_Helper_Data
+     * @return Magehack_Sms_Helper_Data
      */
     public function reportResults(Mage_Core_Model_Session_Abstract $session, array $result)
     {
@@ -363,7 +363,7 @@ class Mediaburst_Sms_Helper_Data extends Mage_Core_Helper_Abstract implements Me
      * @param Mage_Sales_Model_Order $order
      * @param string                 $comment
      *
-     * @return Mediaburst_Sms_Helper_Data
+     * @return Magehack_Sms_Helper_Data
      */
     public function addOrderComment(Mage_Sales_Model_Order $order, $comment)
     {

@@ -17,27 +17,37 @@
  * OF THIS SOFTWARE.
  *
  * @category  Mage
- * @package   Mediaburst_Sms
+ * @package   Magehack_Sms
  * @license   http://opensource.org/licenses/isc-license.txt
  * @copyright Copyright © 2011 by Mediaburst Limited
  * @author    Lee Saferite <lee.saferite@lokeycoding.com>
  */
 
 /**
- * Pending Message Grid
+ * Failed Message Grid
  */
-class Mediaburst_Sms_Block_PendingGrid extends Mediaburst_Sms_Block_AbstractMessageGrid
+class Magehack_Sms_Block_FailedGrid extends Magehack_Sms_Block_AbstractMessageGrid
 {
 
     protected function _filterCollection(Varien_Data_Collection_Db $collection)
     {
-        $collection->addFieldToFilter('status', Mediaburst_Sms_Model_Message::STATUS_PENDING);
+        $collection->addFieldToFilter('status', Magehack_Sms_Model_Message::STATUS_FAILED);
         return $this;
     }
 
     protected function _prepareColumns()
     {
-        if (Mage::getSingleton('admin/session')->isAllowed('sales/mediaburst_sms/send')) {
+        $this->addColumnAfter(
+            'error',
+            array(
+                 'header' => $this->__('Error'),
+                 'index'  => 'error_description',
+                 'filter' => false,
+            ),
+            'content'
+        );
+
+        if (Mage::getSingleton('admin/session')->isAllowed('sales/mediaburst_sms/retry')) {
             $this->addColumnAfter(
                 'action',
                 array(
@@ -50,13 +60,13 @@ class Mediaburst_Sms_Block_PendingGrid extends Mediaburst_Sms_Block_AbstractMess
                      'is_system' => true,
                      'actions'   => array(
                          array(
-                             'caption' => $this->__('Send'),
-                             'url'     => array('base' => '*/*/send'),
+                             'caption' => $this->__('Retry'),
+                             'url'     => array('base' => '*/*/retry'),
                              'field'   => 'id'
                          )
                      )
                 ),
-                'content'
+                'error'
             );
         }
 

@@ -27,8 +27,8 @@
 $this->startSetup();
 
 $this->run("
-    -- DROP TABLE IF EXISTS {$this->getTable('Mediaburst_Sms/Message')};
-    CREATE TABLE {$this->getTable('Mediaburst_Sms/Message')} (
+    DROP TABLE IF EXISTS {$this->getTable('Magehack_Sms/Message')};
+    CREATE TABLE {$this->getTable('Magehack_Sms/Message')} (
         `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
         `store_id` SMALLINT(5) UNSIGNED NOT NULL,
         `to` VARCHAR(40) NOT NULL,
@@ -38,14 +38,17 @@ $this->run("
         `message_id` VARCHAR(255),
         `error_number` INT(10) UNSIGNED,
         `error_description` VARCHAR(255),
+        `created_at` DATETIME NULL,
+        `updated_at` DATETIME NULL,
         PRIMARY KEY  (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Mediaburst SMS Messages';
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Magehack SMS Messages';
 ");
 
 $this->run("
-    ALTER TABLE `{$this->getTable('Mediaburst_Sms/Message')}`
-        ADD KEY `FK_MESSAGE_STORE` (`store_id`),
-        ADD CONSTRAINT `FK_MESSAGE_STORE` FOREIGN KEY (`store_id`) REFERENCES `{$this->getTable('core/store')}` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+    ALTER TABLE `{$this->getTable('Magehack_Sms/Message')}`
+        ADD KEY `FK_MAGEHACK_SMS_MESSAGE_STORE` (`store_id`),
+        ADD CONSTRAINT `FK_MAGEHACK_SMS_MESSAGE_STORE` FOREIGN KEY (`store_id`) REFERENCES `{$this->getTable('core/store')}` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 ");
 
 $this->endSetup();
+

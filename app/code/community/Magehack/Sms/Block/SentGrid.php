@@ -17,7 +17,7 @@
  * OF THIS SOFTWARE.
  *
  * @category  Mage
- * @package   Mediaburst_Sms
+ * @package   Magehack_Sms
  * @license   http://opensource.org/licenses/isc-license.txt
  * @copyright Copyright © 2011 by Mediaburst Limited
  * @author    Lee Saferite <lee.saferite@lokeycoding.com>
@@ -26,12 +26,12 @@
 /**
  * Sent Message Grid
  */
-class Mediaburst_Sms_Block_SentGrid extends Mediaburst_Sms_Block_AbstractMessageGrid
+class Magehack_Sms_Block_SentGrid extends Magehack_Sms_Block_AbstractMessageGrid
 {
 
     protected function _filterCollection(Varien_Data_Collection_Db $collection)
     {
-        $collection->addFieldToFilter('status', Mediaburst_Sms_Model_Message::STATUS_SENT);
+        $collection->addFieldToFilter('status', Magehack_Sms_Model_Message::STATUS_SENT);
         return $this;
     }
 

@@ -17,7 +17,7 @@
  * OF THIS SOFTWARE.
  *
  * @category  Mage
- * @package   Mediaburst_Sms
+ * @package   Magehack_Sms
  * @license   http://opensource.org/licenses/isc-license.txt
  * @copyright Copyright © 2011 by Mediaburst Limited
  * @author    Lee Saferite <lee.saferite@lokeycoding.com>
@@ -26,7 +26,7 @@
 /**
  *
  */
-class Mediaburst_Sms_Model_Message extends Mage_Core_Model_Abstract
+class Magehack_Sms_Model_Message extends Mage_Core_Model_Abstract
 {
     const STATUS_PENDING  = 0;
     const STATUS_SENT     = 1;
@@ -35,7 +35,7 @@ class Mediaburst_Sms_Model_Message extends Mage_Core_Model_Abstract
 
     protected function _construct()
     {
-        $this->_init('Mediaburst_Sms/Message');
+        $this->_init('Magehack_Sms/Message');
     }
 
     /**

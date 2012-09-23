@@ -1,6 +1,6 @@
 <?php
 
-class Mediaburst_Sms_Model_System_Config_Source_Providers
+class Magehack_Sms_System_Config_Source_Providers
 {
     public function toOptionArray()
     {

@@ -17,24 +17,20 @@
  * OF THIS SOFTWARE.
  *
  * @category  Mage
- * @package   Mediaburst_Sms
+ * @package   Magehack_Sms
  * @license   http://opensource.org/licenses/isc-license.txt
  * @copyright Copyright © 2011 by Mediaburst Limited
  * @author    Lee Saferite <lee.saferite@lokeycoding.com>
  */
 
 /**
- * Grid Container
+ *
  */
-class Mediaburst_Sms_Block_GridContainer extends Mage_Adminhtml_Block_Widget_Grid_Container
+class Magehack_Sms_Model_Mysql4_Message extends Mage_Core_Model_Mysql4_Abstract
 {
-    protected function _prepareLayout()
-    {
-        Mage_Adminhtml_Block_Widget_Container::_prepareLayout();
-    }
 
-    public function setHeaderText($headerText)
+    protected function _construct()
     {
-        $this->_headerText = $headerText;
+        $this->_init('Magehack_Sms/Message', 'id');
     }
 }

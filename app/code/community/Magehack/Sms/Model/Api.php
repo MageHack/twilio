@@ -17,7 +17,7 @@
  * OF THIS SOFTWARE.
  *
  * @category  Mage
- * @package   Mediaburst_Sms
+ * @package   Magehack_Sms
  * @license   http://opensource.org/licenses/isc-license.txt
  * @copyright Copyright © 2011 by Mediaburst Limited
  * @author    Lee Saferite <lee.saferite@lokeycoding.com>
@@ -26,23 +26,23 @@
 /**
  * API implementation class
  */
-class Mediaburst_Sms_Model_Api extends Zend_Service_Abstract
+class Magehack_Sms_Model_Api extends Zend_Service_Abstract
 {
     const SMS_PER_REQUEST_LIMIT = 500;
 
     /**
      * Reference to a config object that can provide the details needed for the API
      *
-     * @var Mediaburst_Sms_Model_ApiConfig
+     * @var Magehack_Sms_Model_ApiConfig
      */
     protected $_config;
 
     /**
      * Basic constructor
      *
-     * @param Mediaburst_Sms_Model_ApiConfig $config
+     * @param Magehack_Sms_Model_ApiConfig $config
      */
-    public function __construct(Mediaburst_Sms_Model_ApiConfig $config)
+    public function __construct(Magehack_Sms_Helper_Data $config)
     {
         $this->_config = $config;
     }
@@ -55,7 +55,7 @@ class Mediaburst_Sms_Model_Api extends Zend_Service_Abstract
      * @param string  $content  Message to send. Limited to 160 GMS characters
      * @param array   $extra    Addition parameters
      */
-    public function sendMessage(Mediaburst_Sms_Model_Message $message)
+    public function sendMessage(Magehack_Sms_Model_Message $message)
     {
         return $this->sendMessages(array($message));
     }
@@ -67,12 +67,15 @@ class Mediaburst_Sms_Model_Api extends Zend_Service_Abstract
      */
     public function sendMessages(array $messages)
     {
+
+        $this->_config->log('Messages ' . count($messages), Zend_Log::WARN);
+
         if (count($messages) === 0) {
             return;
         }
 
         if (count($messages) > self::SMS_PER_REQUEST_LIMIT) {
-            throw new Mediaburst_Sms_Exception('Too many messages. Limit is ' . self::SMS_PER_REQUEST_LIMIT . ' per request');
+            throw new Magehack_Sms_Exception('Too many messages. Limit is ' . self::SMS_PER_REQUEST_LIMIT . ' per request');
         }
 
         $result = array(
@@ -88,7 +91,7 @@ class Mediaburst_Sms_Model_Api extends Zend_Service_Abstract
         $root = $xml->appendChild($xml->createElement('Message'));
         $root->appendChild($xml->createElement('Key', $this->_config->getKey()));
         foreach ($messages as $message) {
-            if (!$message instanceof Mediaburst_Sms_Model_Message) {
+            if (!$message instanceof Magehack_Sms_Model_Message) {
                 $this->_config->log('Message object not expected type', Zend_Log::WARN);
                 continue;
             }
@@ -122,7 +125,7 @@ class Mediaburst_Sms_Model_Api extends Zend_Service_Abstract
         $response = $client->request(Zend_Http_Client::POST);
 
         if (!$response->isSuccessful()) {
-            throw new Mediaburst_Sms_Exception("Problem communicating with host", $response->getStatus());
+            throw new Magehack_Sms_Exception("Problem communicating with host", $response->getStatus());
         }
 
         $responseBody = $response->getBody();
@@ -156,7 +159,7 @@ class Mediaburst_Sms_Model_Api extends Zend_Service_Abstract
                     $message->getMessageId(null);
                     $message->setErrorNumber($errorNumber);
                     $message->setErrorDescription($errorDescription);
-                    $message->setStatus(Mediaburst_Sms_Model_Message::STATUS_FAILED);
+                    $message->setStatus(Magehack_Sms_Model_Message::STATUS_FAILED);
                     $message->save();
                     $result['failed'][$clientId] = $message;
                 }
@@ -168,7 +171,7 @@ class Mediaburst_Sms_Model_Api extends Zend_Service_Abstract
                     $message->setMessageId($messageId);
                     $message->setErrorNumber(null);
                     $message->setErrorDescription(null);
-                    $message->setStatus(Mediaburst_Sms_Model_Message::STATUS_SENT);
+                    $message->setStatus(Magehack_Sms_Model_Message::STATUS_SENT);
                     $message->save();
                     $result['sent'][$clientId] = $message;
                 }

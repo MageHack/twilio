@@ -17,7 +17,7 @@
  * OF THIS SOFTWARE.
  *
  * @category  Mage
- * @package   Mediaburst_Sms
+ * @package   Magehack_Sms
  * @license   http://opensource.org/licenses/isc-license.txt
  * @copyright Copyright © 2011 by Mediaburst Limited
  * @author    Lee Saferite <lee.saferite@lokeycoding.com>
@@ -26,7 +26,7 @@
 /**
  * Event Observer
  */
-class Mediaburst_Sms_Model_Observer
+class Magehack_Sms_Model_Observer
 {
 
     public function createOrderCreatedMessage(Varien_Event_Observer $observer)
@@ -38,7 +38,7 @@ class Mediaburst_Sms_Model_Observer
                 return;
             }
             try {
-                $message = Mage::getModel('Mediaburst_Sms/Message');
+                $message = Mage::getModel('Magehack_Sms/Message');
                 $message->setStoreId($order->getStoreId());
                 $message->setTo($this->getHelper()->getOrderCreatedTo());
                 $message->setFrom($this->getHelper()->getOrderCreatedFrom());
@@ -61,7 +61,7 @@ class Mediaburst_Sms_Model_Observer
                 return;
             }
             try {
-                $message = Mage::getModel('Mediaburst_Sms/Message');
+                $message = Mage::getModel('Magehack_Sms/Message');
                 $message->setStoreId($order->getStoreId());
                 $message->setTo($this->getHelper()->getTelephone($order));
                 $message->setFrom($this->getHelper()->getOrderShippedFrom());
@@ -85,7 +85,7 @@ class Mediaburst_Sms_Model_Observer
             }
             if ($order->getState() !== $order->getOrigData('state') && $order->getState() === Mage_Sales_Model_Order::STATE_HOLDED) {
                 try {
-                    $message = Mage::getModel('Mediaburst_Sms/Message');
+                    $message = Mage::getModel('Magehack_Sms/Message');
                     $message->setStoreId($order->getStoreId());
                     $message->setTo($this->getHelper()->getTelephone($order));
                     $message->setFrom($this->getHelper()->getOrderHeldFrom());
@@ -110,7 +110,7 @@ class Mediaburst_Sms_Model_Observer
             }
             if ($order->getState() !== $order->getOrigData('state') && $order->getOrigData('state') === Mage_Sales_Model_Order::STATE_HOLDED) {
                 try {
-                    $message = Mage::getModel('Mediaburst_Sms/Message');
+                    $message = Mage::getModel('Magehack_Sms/Message');
                     $message->setStoreId($order->getStoreId());
                     $message->setTo($this->getHelper()->getTelephone($order));
                     $message->setFrom($this->getHelper()->getOrderUnheldFrom());
@@ -154,11 +154,11 @@ class Mediaburst_Sms_Model_Observer
         $api = $this->getHelper()->getApi();
 
         foreach ($runs as $run) {
-            $collection = Mage::getModel('Mediaburst_Sms/Message')->getCollection()
+            $collection = Mage::getModel('Magehack_Sms/Message')->getCollection()
                 ->addFieldToSelect('*')
-                ->addFieldToFilter('status', Mediaburst_Sms_Model_Message::STATUS_PENDING)
+                ->addFieldToFilter('status', Magehack_Sms_Model_Message::STATUS_PENDING)
                 ->addFieldToFilter('store_id', $run['stores'])
-                ->setPageSize(Mediaburst_Sms_Model_Api::SMS_PER_REQUEST_LIMIT);
+                ->setPageSize(Magehack_Sms_Model_Api::SMS_PER_REQUEST_LIMIT);
 
             Mage::dispatchEvent('mediaburst_sms_send_pending_before', array('collection' => $collection));
 
@@ -176,10 +176,10 @@ class Mediaburst_Sms_Model_Observer
 
     /**
      *
-     * @return Mediaburst_Sms_Helper_Data
+     * @return Magehack_Sms_Helper_Data
      */
     public function getHelper()
     {
-        return Mage::helper('Mediaburst_Sms/Data');
+        return Mage::helper('Magehack_Sms/Data');
     }
 }

@@ -17,7 +17,7 @@
  * OF THIS SOFTWARE.
  *
  * @category  Mage
- * @package   Mediaburst_Sms
+ * @package   Magehack_Sms
  * @license   http://opensource.org/licenses/isc-license.txt
  * @copyright Copyright © 2011 by Mediaburst Limited
  * @author    Lee Saferite <lee.saferite@lokeycoding.com>
@@ -26,7 +26,7 @@
 /**
  * Credit Report Grid
  */
-class Mediaburst_Sms_Block_CreditReportGrid extends Mage_Adminhtml_Block_Widget_Grid
+class Magehack_Sms_Block_CreditReportGrid extends Mage_Adminhtml_Block_Widget_Grid
 {
 
     protected function _prepareLayout()
@@ -43,7 +43,7 @@ class Mediaburst_Sms_Block_CreditReportGrid extends Mage_Adminhtml_Block_Widget_
     {
         $collection = new Varien_Data_Collection();
 
-        $helper = Mage::helper('Mediaburst_Sms/Data');
+        $helper = Mage::helper('Magehack_Sms/Data');
 
         $runs = array();
 
@@ -66,8 +66,8 @@ class Mediaburst_Sms_Block_CreditReportGrid extends Mage_Adminhtml_Block_Widget_
             }
         }
 
-        $api = Mage::getModel('Mediaburst_Sms/Api', $helper);
-        /* @var $api Mediaburst_Sms_Model_Api */
+        $api = Mage::getModel('Magehack_Sms/Api', $helper);
+        /* @var $api Magehack_Sms_Model_Api */
 
         $results = array();
 
@@ -123,7 +123,7 @@ class Mediaburst_Sms_Block_CreditReportGrid extends Mage_Adminhtml_Block_Widget_
     {
         $container = $this->getParentBlock();
         if ($container instanceof Mage_Adminhtml_Block_Widget_Grid_Container) {
-            $helper = Mage::helper('Mediaburst_Sms/Data');
+            $helper = Mage::helper('Magehack_Sms/Data');
             $container->addButton(
                 'buy',
                 array(
